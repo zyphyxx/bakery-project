@@ -1,7 +1,8 @@
 package com.zpx.bakery;
 
+import com.zpx.bakery.controller.ProductController;
 import com.zpx.bakery.entities.Product;
-import com.zpx.bakery.repositories.ProductDAO;
+import com.zpx.bakery.repositories.ProductRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,16 +18,12 @@ public class BakeryApplication {
     }
 
     @Bean
-    CommandLineRunner commandLineRunner(ProductDAO productDAO) {
+    CommandLineRunner commandLineRunner(ProductRepository productRepository) {
         return runner -> {
 
-            Product p1 = new Product();
-            p1.setName("Lapis");
-            p1.setType("Material Escolar");
-
-            productDAO.addProduct(p1);
-
-            System.out.println("salvo com sucesso");
+            Product p2 = new Product();
+            p2.setName("Caderno");
+            p2.setType("Material Escolar");
 
         };
     }
