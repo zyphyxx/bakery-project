@@ -2,37 +2,29 @@ package com.zpx.bakery.entities;
 
 import jakarta.persistence.*;
 
-import java.util.*;
+import java.util.Objects;
 
 @Entity
-@Table (name = "product")
+@Table(name = "tb_produto")
 public class Product {
 
-    // fields
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "name")
+    @Column(name = "nome")
     private String name;
 
-    @Column(name = "price")
-    private Double price;
+    @Column(name = "tipo")
+    private String type;
 
-    @Column(name = "quantity")
-    private int quantity;
-
-    public Product(String name, Double price, int quantity) {
-        this.name = name;
-        this.price = price;
-        this.quantity = quantity;
-    }
-
+    // constructor
     public Product() {
 
     }
 
+    //getters and setters
     public Integer getId() {
         return id;
     }
@@ -49,41 +41,24 @@ public class Product {
         this.name = name;
     }
 
-    public Double getPrice() {
-        return price;
+    public String getType() {
+        return type;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
+    // equals and hashcode
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Product product)) return false;
-        return Objects.equals(getId(), product.getId()) && Objects.equals(getName(), product.getName()) && Objects.equals(getPrice(), product.getPrice()) && Objects.equals(getQuantity(), product.getQuantity());
+        return Objects.equals(getId(), product.getId()) && Objects.equals(getName(), product.getName()) && Objects.equals(getType(), product.getType());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getPrice(), getQuantity());
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", quantity=" + quantity +
-                '}';
+        return Objects.hash(getId(), getName(), getType());
     }
 }
