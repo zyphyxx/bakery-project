@@ -24,6 +24,12 @@ public class Product {
 
     }
 
+    public Product(Integer id, String name, String type) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+    }
+
     //getters and setters
     public Integer getId() {
         return id;
