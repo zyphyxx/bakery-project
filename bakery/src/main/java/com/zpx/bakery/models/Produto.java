@@ -5,6 +5,7 @@ import com.zpx.bakery.enums.Tipo;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Entity(name = "produto")
 @Table(name = "tb_produto")
@@ -28,7 +29,7 @@ public class Produto {
     private LocalDate validade;
 
     @Column(name = "tipo")
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private Tipo tipo;
 
     public Produto(){}
@@ -87,6 +88,18 @@ public class Produto {
 
     public void setTipo(Tipo tipo) {
         this.tipo = tipo;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Produto produto)) return false;
+        return Objects.equals(getId(), produto.getId()) && Objects.equals(getNome(), produto.getNome()) && Objects.equals(getPreco(), produto.getPreco()) && Objects.equals(getQuantidade(), produto.getQuantidade()) && Objects.equals(getValidade(), produto.getValidade()) && getTipo() == produto.getTipo();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getNome(), getPreco(), getQuantidade(), getValidade(), getTipo());
     }
 }
 
