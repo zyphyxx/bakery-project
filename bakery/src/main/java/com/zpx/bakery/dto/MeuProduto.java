@@ -14,13 +14,13 @@ public class MeuProduto {
     private LocalDate validade;
     private Tipo tipo;
 
-    public MeuProduto(String nome, Double preco, Integer quantidade, LocalDate validade, Tipo tipo) {
-        this.nome = nome;
-        this.preco = preco;
-        this.quantidade = quantidade;
-        this.validade = validade;
-        this.tipo = tipo;
+    public MeuProduto (Produto produto){
+        this.id = produto.getId();
+        this.nome = produto.getNome();
+        this.preco = produto.getPreco();
+        this.quantidade = produto.getQuantidade();
     }
+
 
     public MeuProduto() {
     }

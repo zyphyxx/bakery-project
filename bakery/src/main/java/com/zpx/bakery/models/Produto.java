@@ -1,5 +1,6 @@
 package com.zpx.bakery.models;
 
+import com.zpx.bakery.dto.ListarProduto;
 import com.zpx.bakery.dto.MeuProduto;
 import com.zpx.bakery.enums.Tipo;
 import jakarta.persistence.*;
@@ -33,14 +34,20 @@ public class Produto {
     private Tipo tipo;
 
     public Produto(){}
-    public Produto(MeuProduto produto) {
-        this.id = produto.getId();
-        this.nome = produto.getNome();
-        this.preco = produto.getPreco();
-        this.quantidade = produto.getQuantidade();
-        this.validade = produto.getValidade();
-        this.tipo = produto.getTipo();
+
+    public Produto(Long id, String nome, Double preco, Integer quantidade, LocalDate validade, Tipo tipo) {
+        this.id = id;
+        this.nome = nome;
+        this.preco = preco;
+        this.quantidade = quantidade;
+        this.validade = validade;
+        this.tipo = tipo;
     }
+
+    public Produto(MeuProduto meuProduto) {
+
+    }
+
 
     public Long getId() {
         return id;

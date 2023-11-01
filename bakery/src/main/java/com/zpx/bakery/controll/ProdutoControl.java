@@ -1,5 +1,7 @@
 package com.zpx.bakery.controll;
 
+import com.zpx.bakery.dto.ListarProduto;
+import com.zpx.bakery.dto.MeuProduto;
 import com.zpx.bakery.models.Produto;
 import com.zpx.bakery.repository.ProdutoRepository;
 import jakarta.transaction.Transactional;
@@ -17,38 +19,29 @@ public class ProdutoControl {
 
     @PostMapping
     @Transactional
-    public void salvar(@RequestBody Produto produto){
+    public void salvar(@RequestBody MeuProduto meuProduto) {
+        Produto produto = new Produto(meuProduto);
         repository.save(produto);
     }
 
     @GetMapping
-    public List<Produto> listar (){
-        return repository.findAll();
+    public List<ListarProduto> listar() {
+        return repository.findAll().stream().map(ListarProduto::new).toList(); // preciso entender
     }
 
     @DeleteMapping("/{id}")
-    public void deletar(@PathVariable Long id){
+    public void deletar(@PathVariable Long id) {
         repository.deleteById(id);
     }
 
     @PutMapping
-    public void atualizar(@RequestBody Produto produto){
+    public void atualizar(@RequestBody Produto produto) {
         Long x = produto.getId();
-        if (produto.getId().equals(x)){
+        if (produto.getId().equals(x)) {
             repository.save(produto);
         }
 
     }
-
-
-
-
-
-
-    
-
-
-
 
 
 }
