@@ -1,7 +1,7 @@
 package com.zpx.bakery.models;
 
-import com.zpx.bakery.dto.ListarProduto;
 import com.zpx.bakery.dto.MeuProduto;
+import com.zpx.bakery.dto.MyProduct;
 import com.zpx.bakery.enums.Tipo;
 import jakarta.persistence.*;
 
@@ -33,7 +33,8 @@ public class Produto {
     @Enumerated(EnumType.STRING)
     private Tipo tipo;
 
-    public Produto(){}
+    public Produto() {
+    }
 
     public Produto(Long id, String nome, Double preco, Integer quantidade, LocalDate validade, Tipo tipo) {
         this.id = id;
@@ -47,6 +48,7 @@ public class Produto {
     public Produto(MeuProduto meuProduto) {
 
     }
+
 
 
     public Long getId() {

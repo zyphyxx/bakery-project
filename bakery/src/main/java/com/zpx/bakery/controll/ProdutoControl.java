@@ -19,10 +19,12 @@ public class ProdutoControl {
 
     @PostMapping
     @Transactional
-    public void salvar(@RequestBody MeuProduto meuProduto) {
+    /*public void salvar(@RequestBody MeuProduto meuProduto) {
         Produto produto = new Produto(meuProduto);
         repository.save(produto);
     }
+
+     */
 
     @GetMapping
     public List<ListarProduto> listar() {
